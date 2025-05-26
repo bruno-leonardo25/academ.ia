@@ -1,3 +1,8 @@
-projeto da aula da materia aplicaçao pra internet vamos fazer um site que monta um cronograma de exercicio usando ia
+Projeto: Cronograma de Exercícios com IA
+Integrantes:
+
 Bruno Morales Leonardo
 Cesar Morales Leonardo
+
+Objetivo do Projeto:
+Criar um site interativo que utiliza inteligência artificial para montar um cronograma de exercícios físicos personalizado com base nas preferências e condições físicas do usuário.
