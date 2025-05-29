@@ -1,4 +1,4 @@
-const API_KEY = "";
+const API_KEY = "AIzaSyDMb1lirqANIUBZ7s1xKpEXQEGKhJfGQzQ";
 const URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 async function chamarGemini(prompt) {
@@ -56,6 +56,9 @@ function criarTemplate(dados){
         2. Plano de treino semanal adaptado;
         3. Dicas complementares de alimentação, recuperação e motivação.
         4. *Me responda numa estrutura de código HTML, somente o conteúdo da tag body*
+
+        Critérios de Aceite:
+        - Apenas responda se as informações que forem informadas fizerem sentido, em caso de não parecerem informações boas ou suficientes para criar a sugestão, devolva que não pode fornecer um plano por conta das informações fornecidas.
     `
 }
 
@@ -94,7 +97,7 @@ document.querySelector('#btnEnviar').onclick = async function (event) {
         const template = criarTemplate(dados)
         console.log(template)
         const resposta = await chamarGemini(template)
-        adicionarResposta(resposta)
+        adicionarResposta(resposta.replace(/`/g, '').replace(/^\s*html\s*\n?/, ''))
     }
 }
 
