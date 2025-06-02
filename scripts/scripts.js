@@ -69,7 +69,7 @@ document.querySelector('#btnEnviar').onclick = async function (event) {
     let mensagemErro = "";
 
     const requiredInputs = [
-        "p1", "p2", "p5", "p6", "p7", "p9", "p10", "p11"
+        "objetivo", "meta", "dias por semana", "horário", "atividade", "desmotiva", "alimentação", "dorme"
     ];
     
     requiredInputs.forEach(id => {
@@ -80,7 +80,7 @@ document.querySelector('#btnEnviar').onclick = async function (event) {
         }
     });
 
-    const radios = ["p3", "p4", "p8"];
+    const radios = ["lesão", "condição de saúde", "Prefere treinos"];
     radios.forEach(name => {
         const checked = document.querySelector(`input[name="${name}"]:checked`);
         if (!checked) {
@@ -102,25 +102,25 @@ document.querySelector('#btnEnviar').onclick = async function (event) {
 }
 
 function pegarDadosForms(){
-    const objetivo = document.getElementById("p1").value;
-    const meta = document.getElementById("p2").value;
+    const objetivo = document.getElementById("objetivo").value;
+    const meta = document.getElementById("meta").value;
 
-    const temLesao = document.querySelector('input[name="p3"]:checked')?.value;
-    const qualLesao = document.getElementById("p3sim").value;
+    const temLesao = document.querySelector('input[name="lesão"]:checked')?.value;
+    const qualLesao = document.getElementById("lesão sim").value;
 
-    const temCondicao = document.querySelector('input[name="p4s"]:checked')?.value || document.querySelector('input[name="p4n"]:checked')?.value;
-    const qualCondicao = document.getElementById("p4sim").value;
+    const temCondicao = document.querySelector('input[name="condição de saúde"]:checked')?.value || document.querySelector('input[name="condição de saúden"]:checked')?.value;
+    const qualCondicao = document.getElementById("condição de saúde sim").value;
 
-    const diasTreino = document.getElementById("p5").value;
-    const horarioTreino = document.getElementById("p6").value;
+    const diasTreino = document.getElementById("dias por semana").value;
+    const horarioTreino = document.getElementById("horário").value;
 
-    const atividade = document.getElementById("p7").value;
+    const atividade = document.getElementById("atividade").value;
 
-    const tipoTreino = document.querySelector('input[name="p8"]:checked')?.value;
+    const tipoTreino = document.querySelector('input[name="Prefere treinos"]:checked')?.value;
 
-    const desmotivacao = document.getElementById("p9").value;
-    const alimentacao = document.getElementById("p10").value;
-    const sono = document.getElementById("p11").value;
+    const desmotivacao = document.getElementById("desmotiva").value;
+    const alimentacao = document.getElementById("alimentação").value;
+    const sono = document.getElementById("dorme").value;
 
     return {
         objetivo,
