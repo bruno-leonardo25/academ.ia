@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +10,13 @@
       <header>
          <a href="./index.html"><img src="./img/Academ_ia.png" alt="logo" title="logo"></a>
          <a href="./views/integrantes.html">Integrantes</a>
+         <a href="./views/playlist.html">Músicas</a>
          <a href="#resposta">Planilha de Exercícios</a>
       </header>
       <div class="main">
          <div class="conteudo">
             <h1>Responda as Perguntas</h1>
-            <h3>e recebera um cronograma de treino feito pra voce conseguir o que voce busca</h3>
+            <h3>e receberá um cronograma de treino feito pra conseguir o que você busca</h3>
          </div>
 
          <div class="conteudo">
@@ -44,9 +45,9 @@
                      name="lesão">
                   <label for="lesão não">Não</label>
                </section>
-               <section>
-                  <h4>se sim qual</h4>
-                  <input type="text"id="lesão sim" name="lesão sim"
+               <section id="lesaoDescricao" class="esconder">
+                  <h4>Se sim, qual?</h4>
+                  <input type="text" id="lesão sim" name="lesão sim"
                      placeholder="Digite aqui...">
                </section>
                <section class="radioSection">
@@ -56,8 +57,8 @@
                   <input type="radio" value="não" id="condição de saúde não" name="condição de saúde">
                   <label for="p4n">Não</label>
                </section>
-               <section>
-                  <h4>se sim qual</h4>
+               <section id="condicaoSaudeDescricao" class="esconder">
+                  <h4>Se sim, qual?</h4>
                   <input type="text"id="condição de saúde sim" name="condição de saúde sim"
                      placeholder="Digite aqui...">
                </section>
@@ -115,9 +116,10 @@
                </button>
             </form>
          </div>
-         <div id="resposta" class="conteudo"></div>
+         <div id="resposta" class="esconder">
+         </div>
          <footer>
-            <p>Feito por Cesar Leonardo, Bruno Leonardo e Matheus José</p>
+            <p>Feito por Cesar Leonardo, Bruno Leonardo e Matheus Ferreira</p>
             <p>GitHub: <a href="https://github.com/CMLeonardo" target="_blank">CMLeonardo</a>, <a href="https://github.com/bruno-leonardo25" target="_blank">bruno-leonardo25</a> e <a href="https://github.com/MatBr173" target="_blank">MatBr173</a></p>
         </footer>
       </div>
