@@ -44,7 +44,7 @@ academia/
 
 1. Clone este repositório:
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/bruno-leonardo25/academ.ia.git
 ````
 
 2. Insira sua **chave de API Gemini** no arquivo `scripts.js`:
@@ -63,7 +63,7 @@ const API_KEY = "SUA_CHAVE_AQUI";
 
 * Navegador moderno (Chrome, Firefox, Edge)
 * Conexão com a internet
-* Chave de API do [Google AI Studio](https://makersuite.google.com/)
+* Chave de API do [Google Cloud - Console de Credenciais API](https://console.cloud.google.com/apis/credentials)
 
 ## 👨‍💻 Autores
 
