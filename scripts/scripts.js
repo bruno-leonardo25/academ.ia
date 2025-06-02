@@ -43,7 +43,7 @@ function criarTemplate(dados){
         - Objetivo principal: ${dados.objetivo}
         - Meta específica: ${dados.meta}
         - Lesão atual: ${dados.temLesao} (não ignore esse fator na recomendação, se existir considere essa lesão: ${dados.qualLesao})
-        - Condição de Saúde: ${dados.temCondicao} (não ignore esse fator na recomendação, se existir considere essa consição: ${dados.qualCondicao})
+        - Condição de Saúde: ${dados.temCondicao} (não ignore esse fator na recomendação, se existir considere essa condição: ${dados.qualCondicao})
         - Disponibilidade para treinos: ${dados.diasTreino} dias por semana, no período de(a) ${dados.horarioTreino}
         - Atividade favorita: ${dados.atividade}
         - Preferência de tipo de treino: ${dados.tipoTreino}
@@ -63,7 +63,6 @@ function criarTemplate(dados){
 }
 
 document.querySelector('#btnEnviar').onclick = async function (event) {
-    console.log("Entrei")
     event.preventDefault();
     let valid = true;
     let mensagemErro = "";
@@ -92,7 +91,7 @@ document.querySelector('#btnEnviar').onclick = async function (event) {
     if (!valid) {
         alert("Por favor, preencha todos os campos obrigatórios:\n\n" + mensagemErro);
     } else {
-        alert("Todos os campos estão preenchidos. Enviando...");
+        alert("Todos os campos estão preenchidos. Aguarde enquanto geramos sua planilha de exercícios...");
         const dados = pegarDadosForms()
         const template = criarTemplate(dados)
         console.log(template)
@@ -106,10 +105,10 @@ function pegarDadosForms(){
     const meta = document.getElementById("meta").value;
 
     const temLesao = document.querySelector('input[name="lesão"]:checked')?.value;
-    const qualLesao = document.getElementById("lesão sim").value;
+    const qualLesao = temLesao == "sim" ? document.getElementById("lesaoDescricao").value : "Nenhuma";
 
-    const temCondicao = document.querySelector('input[name="condição de saúde"]:checked')?.value || document.querySelector('input[name="condição de saúden"]:checked')?.value;
-    const qualCondicao = document.getElementById("condição de saúde sim").value;
+    const temCondicao = document.querySelector('input[name="condição de saúde"]:checked')?.value;
+    const qualCondicao = temCondicao == "sim" ? document.getElementById("condicaoSaudeDescricao").value: "Nenhuma";
 
     const diasTreino = document.getElementById("dias por semana").value;
     const horarioTreino = document.getElementById("horário").value;
@@ -140,6 +139,32 @@ function pegarDadosForms(){
 }
 
 function adicionarResposta (resposta) {
+    document.getElementById("resposta").classList.remove("esconder")
+    document.getElementById("resposta").classList.add("conteudo")
     document.querySelector('#resposta').innerHTML 
         = `<p>${resposta}</p>`;
+}
+
+document.querySelectorAll('input[name="lesão"]').forEach(input => {
+  input.addEventListener("change", function () {
+    const temLesao = document.querySelector('input[name="lesão"]:checked')?.value;
+    exibirDescricao(temLesao, "lesaoDescricao")
+  });
+});
+
+document.querySelectorAll('input[name="condição de saúde"]').forEach(input => { 
+  input.addEventListener("change", function () {
+    const temCondicao = document.querySelector('input[name="condição de saúde"]:checked')?.value
+    exibirDescricao(temCondicao, "condicaoSaudeDescricao")
+  })
+});
+
+function exibirDescricao(valor, id) {
+  if (valor == "sim") {
+    document.getElementById(id).classList.remove("esconder")
+    document.getElementById(id).classList.add("exibirDescricao")
+  }else {
+    document.getElementById(id).classList.remove("exibirDescricao")
+    document.getElementById(id).classList.add("esconder")
+  }
 }
